@@ -30,7 +30,28 @@
         D=A
 	@color
 	M=D
+        
 	@DRAW
+	0;JMP
+
+(CLINE)
+
+	@20480
+	D=A
+	@coord1
+	M=D
+	@32
+	D=A
+	@cont1
+	M=D
+	@1
+	D=A
+	@salto1
+	M=D
+	@color1
+	M=-1
+
+        @DRAWR
 	0;JMP
 
 (DRAW)
@@ -42,7 +63,7 @@
 (DRAWL)
         @cont
         D=M
-        @END
+        @CLINE
         D;JEQ
         
         @color
@@ -59,8 +80,38 @@
 
         @pscreen
         M=M+D
-
+        
         @DRAWL
+        0;JMP
+
+(DRAWR)
+        @coord1
+        D=M
+        @pscreen
+        M=D
+
+(DRAWN)
+        @cont1
+        D=M
+        @END
+        D;JEQ
+
+        @color1
+        D=M
+        @pscreen
+        A=M
+        M=D
+
+        @cont1
+        M=M-1
+
+        @salto1
+        D=M
+
+        @pscreen
+        M=M+D
+
+        @DRAWN
         0;JMP
 
 (END)
