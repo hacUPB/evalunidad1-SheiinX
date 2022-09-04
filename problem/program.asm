@@ -10,8 +10,33 @@
         @DLINE
         D;JEQ
 
+        @KBD
+        D=M
+        @67
+        D=D-A 
+        @CLEAR
+        D;JEQ
+
         @STR
         0;JMP
+
+(CLEAR)
+        @16384 
+	D=A
+	@coord1 
+	M=D 
+	@8192
+	D=A
+	@cont1
+	M=D
+	@1
+	D=A 
+	@salto1
+	M=D
+	@color1
+	M=0
+	@DRAWR
+	0;JMP
 
 (DLINE)
         @16400 //16384 (pantalla completa) + fila * 32 + columna/16
@@ -114,5 +139,7 @@
         @DRAWN
         0;JMP
 
+
 (END)
+        @STR
         0;JMP
